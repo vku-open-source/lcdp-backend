@@ -33,6 +33,13 @@ export const getAllWindLevel = async () => {
     const lv:any = [
         {lv1:8, lv2:9, types:1},
         {lv1:6,lv2:7,types:1},
+        {lv1:8,lv2:9,types:2},
+        {lv1:6,lv2:7,types:2},
+        {lv1:6,lv2:7,types:3},
+        {lv1:12,lv2:17,types:2},
+        {lv1:10,lv2:11,types:2},
+        {lv1:10,lv2:11,types:3},
+        {lv1:12,lv2:17,types:3},
     ];
     let result:any = [];
     for (const level of lv) {

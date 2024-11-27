@@ -30,7 +30,27 @@ export const getRainLevel = async (lv1: number, lv2:number, types:number) => {
 
 export const getAllRainLevel = async () => {
     const lv:any = [
+        {lv1:300,lv2:1000,types:5},
+        {lv1:300,lv2:1000,types:4},
+        {lv1:300,lv2:1000,types:3},
+        {lv1:300,lv2:1000,types:2},
+        {lv1:100,lv2:200,types:1},
+        {lv1:200,lv2:300,types:1},
+        {lv1:100,lv2:200,types:5},
+        {lv1:200,lv2:300,types:5},
+        {lv1:100,lv2:200,types:4},
+        {lv1:200,lv2:300,types:4},
+        {lv1:100,lv2:200,types:3},
+        {lv1:200,lv2:300,types:3},
+        {lv1:200,lv2:300,types:2},
+        {lv1:100,lv2:200,types:2},
+        {lv1:200,lv2:1000,types:7},
+        {lv1:100,lv2:200,types:7},
+        {lv1:50,lv2:100,types:1},
+        {lv1:50,lv2:100,types:5},
+        {lv1:50,lv2:100,types:4},
         {lv1:50,lv2:100,types:3},
+        {lv1:50,lv2:100,types:2},
     ];
     let result:any = [];
     for (const level of lv) {
