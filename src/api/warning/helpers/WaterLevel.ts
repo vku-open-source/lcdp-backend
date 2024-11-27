@@ -1,14 +1,15 @@
 import axios from 'axios';
+import { vndmsAxios } from '../../../axios/AxiosCfg';
 
 const extractWaterLevel = (popupInfo: string) => {
-    const regex = /Mực nước \(([\d.]+)\(m\)/; // Biểu thức chính quy tìm mực nước (xử lý giá trị dạng 1.41(m))
-    const match = popupInfo.match(regex); // Tìm kiếm theo biểu thức chính quy
-    return match ? match[1] : null; // Trả về mực nước nếu tìm thấy, ngược lại trả về null
+    const regex = /Mực nước \(([\d.]+)\(m\)/; 
+    const match = popupInfo.match(regex); 
+    return match ? match[1] : null; 
 };
 
 
 export const getWaterLevel = async (lv: number) => {
-    const response = await axios.get(`http://vndms.dmptc.gov.vn/water_level?lv=${lv}`);
+    const response = await vndmsAxios.get(`/water_level?lv=${lv}`);
     const data = response.data;
     const features = data?.features || [];
     const processedData = features.map((feature: any) => {
@@ -28,3 +29,4 @@ export const getWaterLevel = async (lv: number) => {
 
     return processedData;
 };
+
