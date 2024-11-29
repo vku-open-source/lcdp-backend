@@ -461,6 +461,36 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiNchmfWarningNchmfWarning
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'nchmf_warnings';
+  info: {
+    displayName: 'nchmf-warning';
+    pluralName: 'nchmf-warnings';
+    singularName: 'nchmf-warning';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.JSON;
+    date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nchmf-warning.nchmf-warning'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiWarningWarning extends Struct.SingleTypeSchema {
   collectionName: 'warnings';
   info: {
@@ -1001,6 +1031,7 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
+      'api::nchmf-warning.nchmf-warning': ApiNchmfWarningNchmfWarning;
       'api::warning.warning': ApiWarningWarning;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
