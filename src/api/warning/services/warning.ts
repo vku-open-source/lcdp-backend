@@ -7,6 +7,7 @@ import axios from 'axios';
 import { getWaterLevel } from '../helpers/WaterLevel';
 import { getAllWindLevel } from '../helpers/Wind';
 import { getAllRainLevel } from '../helpers/Rain';
+import { getEarthQuake } from '../helpers/Earthquake';
 
 export default factories.createCoreService('api::warning.warning', ({ strapi }) => ({
     async find(ctx: any) {
@@ -19,6 +20,7 @@ export default factories.createCoreService('api::warning.warning', ({ strapi }) 
 
         result.push(...await getAllWindLevel());
         result.push(...await getAllRainLevel());
+        result.push(...await getEarthQuake());
 
         return result;
     },
