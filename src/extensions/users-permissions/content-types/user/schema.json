@@ -67,6 +67,9 @@
     },
     "phone": {
       "type": "biginteger"
+    },
+    "allowNotification": {
+      "type": "json"
     }
   }
 }
