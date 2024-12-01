@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eop_tasks",
+  "info": {
+    "singularName": "eop-task",
+    "pluralName": "eop-tasks",
+    "displayName": "eop-task"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "eop": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::eop.eop"
+    },
+    "priority": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "4096",
+      "required": true
+    },
+    "location": {
+      "type": "text",
+      "default": "4096",
+      "required": true
+    },
+    "resources_needed": {
+      "type": "text",
+      "default": "4096",
+      "required": true
+    }
+  }
+}

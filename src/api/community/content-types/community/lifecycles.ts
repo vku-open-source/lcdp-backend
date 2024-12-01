@@ -11,9 +11,14 @@ interface Community {
   };
 }
 
+const notificationServiceBaseURL = `http://127.0.0.1:3000/api`;
+
 const notificationApi = axios.create({
-  baseURL: "http://127.0.0.1:3000/api",
+  baseURL: notificationServiceBaseURL,
   timeout: 5000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 async function handleNotification(event: { result: Community }) {

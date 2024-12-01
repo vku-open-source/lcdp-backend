@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eops",
+  "info": {
+    "singularName": "eop",
+    "pluralName": "eops",
+    "displayName": "eop",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": true,
+      "default": "\"\""
+    },
+    "draft": {
+      "type": "boolean",
+      "default": true
+    },
+    "flood_data": {
+      "type": "json",
+      "required": true
+    },
+    "resource_data": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nchmf_warnings",
+  "info": {
+    "singularName": "nchmf-warning",
+    "pluralName": "nchmf-warnings",
+    "displayName": "nchmf-warning"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "date"
+    },
+    "data": {
+      "type": "json"
+    }
+  }
+}

@@ -67,12 +67,6 @@
     },
     "phone": {
       "type": "biginteger"
-    },
-    "notifications": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::notification.notification",
-      "mappedBy": "receiver"
     }
   }
 }

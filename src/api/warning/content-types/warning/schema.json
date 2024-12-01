@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "warnings",
+  "info": {
+    "singularName": "warning",
+    "pluralName": "warnings",
+    "displayName": "warning"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "warning": {
+      "type": "json"
+    }
+  }
+}

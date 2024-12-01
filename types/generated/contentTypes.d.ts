@@ -549,6 +549,103 @@ export interface ApiCommunityCommunity extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEopTaskEopTask extends Struct.CollectionTypeSchema {
+  collectionName: 'eop_tasks';
+  info: {
+    displayName: 'eop-task';
+    pluralName: 'eop-tasks';
+    singularName: 'eop-task';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'4096'>;
+    eop: Schema.Attribute.Relation<'oneToOne', 'api::eop.eop'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::eop-task.eop-task'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'4096'>;
+    priority: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    resources_needed: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'4096'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEopEop extends Struct.CollectionTypeSchema {
+  collectionName: 'eops';
+  info: {
+    description: '';
+    displayName: 'eop';
+    pluralName: 'eops';
+    singularName: 'eop';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'""'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    draft: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    flood_data: Schema.Attribute.JSON & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::eop.eop'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    resource_data: Schema.Attribute.JSON & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFloodFlood extends Struct.CollectionTypeSchema {
+  collectionName: 'floods';
+  info: {
+    description: '';
+    displayName: 'flood';
+    pluralName: 'floods';
+    singularName: 'flood';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::flood.flood'> &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.JSON & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    risk_level: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    water_level: Schema.Attribute.Decimal & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -575,6 +672,36 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     siteName: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNchmfWarningNchmfWarning
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'nchmf_warnings';
+  info: {
+    displayName: 'nchmf-warning';
+    pluralName: 'nchmf-warnings';
+    singularName: 'nchmf-warning';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.JSON;
+    date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nchmf-warning.nchmf-warning'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -611,14 +738,38 @@ export interface ApiNotificationNotification
     noti_status: Schema.Attribute.Enumeration<['pending', 'sent', 'failed']> &
       Schema.Attribute.DefaultTo<'pending'>;
     publishedAt: Schema.Attribute.DateTime;
-    receiver: Schema.Attribute.Relation<
-      'manyToMany',
-      'plugin::users-permissions.user'
-    >;
     sentAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWarningWarning extends Struct.SingleTypeSchema {
+  collectionName: 'warnings';
+  info: {
+    displayName: 'warning';
+    pluralName: 'warnings';
+    singularName: 'warning';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::warning.warning'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    warning: Schema.Attribute.JSON;
   };
 }
 
@@ -1096,10 +1247,6 @@ export interface PluginUsersPermissionsUser
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
-    notifications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::notification.notification'
-    >;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
@@ -1140,8 +1287,13 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::community.community': ApiCommunityCommunity;
+      'api::eop-task.eop-task': ApiEopTaskEopTask;
+      'api::eop.eop': ApiEopEop;
+      'api::flood.flood': ApiFloodFlood;
       'api::global.global': ApiGlobalGlobal;
+      'api::nchmf-warning.nchmf-warning': ApiNchmfWarningNchmfWarning;
       'api::notification.notification': ApiNotificationNotification;
+      'api::warning.warning': ApiWarningWarning;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

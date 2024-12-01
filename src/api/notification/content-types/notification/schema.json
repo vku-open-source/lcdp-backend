@@ -30,12 +30,6 @@
     "sentAt": {
       "type": "datetime"
     },
-    "receiver": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "notifications"
-    },
     "noti_content": {
       "type": "json"
     }

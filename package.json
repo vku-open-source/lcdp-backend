@@ -1,5 +1,5 @@
 {
-  "name": "vku-opensource-project",
+  "name": "olp-backend",
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
@@ -15,11 +15,11 @@
     "@strapi/plugin-cloud": "5.4.2",
     "@strapi/plugin-users-permissions": "5.4.2",
     "@strapi/strapi": "5.4.2",
-    "@types/axios": "^0.14.4",
     "axios": "^1.7.8",
-    "better-sqlite3": "11.3.0",
+    "better-sqlite3": "^11.6.0",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
+    "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
@@ -29,6 +29,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/responselike": "^1.0.3",
     "typescript": "^5"
   },
   "engines": {
@@ -36,6 +37,6 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "ea928ad7-dbad-4afe-814d-572c1bde8653"
+    "uuid": "9dbc6828-84eb-4814-af7c-730ecb9269de"
   }
 }
