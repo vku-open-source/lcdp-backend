@@ -3,7 +3,7 @@ import generateNchmfWarning from "./generate-nchmf-warning";
 export default {
   GenerateNchmfWarning: {
     task: ({ strapi }) => {
-      generateNchmfWarning();
+      // generateNchmfWarning();
     },
     options: {
       // rule: "0 0 * * *",  // Run every day at midnight

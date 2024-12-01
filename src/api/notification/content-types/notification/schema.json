@@ -30,7 +30,14 @@
     "sentAt": {
       "type": "datetime"
     },
-    "noti_content": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string"
+    },
+    "recipients": {
       "type": "json"
     }
   }

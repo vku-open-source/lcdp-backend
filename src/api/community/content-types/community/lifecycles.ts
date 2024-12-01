@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { Core } from "@strapi/strapi";
+import { UUID } from "crypto";
 
 interface User {
   id: number;
@@ -12,6 +13,7 @@ interface User {
 }
 
 interface Community {
+  documentId: UUID;
   title: string;
   content: string;
   type: string;
@@ -55,11 +57,27 @@ async function handleNotification(event: { result: Community }) {
 
       // Chỉ gửi request nếu có ít nhất 1 recipient
       if (recipients.length > 0) {
-        await notificationApi.post("/notifications", {
-          title: result.title,
-          content: result.content,
-          type: result.type,
-          recipients,
+        const notificationResponse = await notificationApi.post(
+          "/notifications",
+          {
+            title: result.title,
+            content: result.content,
+            type: result.type,
+            recipients,
+          }
+        );
+
+        // Lưu thông tin notification vào database
+        await strapi.entityService.create("api::notification.notification", {
+          data: {
+            community: result.documentId,
+            title: result.title,
+            content: result.content,
+            recipients: recipients,
+            noti_status:
+              notificationResponse.status === 200 ? "sent" : "failed",
+            sentAt: new Date().toISOString(),
+          },
         });
       }
     } catch (error) {

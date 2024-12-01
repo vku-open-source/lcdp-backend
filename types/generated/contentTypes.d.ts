@@ -725,6 +725,7 @@ export interface ApiNotificationNotification
       'manyToOne',
       'api::community.community'
     >;
+    content: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -734,11 +735,12 @@ export interface ApiNotificationNotification
       'api::notification.notification'
     > &
       Schema.Attribute.Private;
-    noti_content: Schema.Attribute.JSON;
     noti_status: Schema.Attribute.Enumeration<['pending', 'sent', 'failed']> &
       Schema.Attribute.DefaultTo<'pending'>;
     publishedAt: Schema.Attribute.DateTime;
+    recipients: Schema.Attribute.JSON;
     sentAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
