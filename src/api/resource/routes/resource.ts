@@ -22,5 +22,10 @@ export default {
                 auth: false,
             },
         },
+        {
+            method: "POST",
+            path: "/resource/confirm-eop",
+            handler: "api::resource.resource.confirmEOP",
+        },
     ],
 };

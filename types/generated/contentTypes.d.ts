@@ -429,6 +429,44 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEopTaskEopTask extends Struct.CollectionTypeSchema {
+  collectionName: 'eop_tasks';
+  info: {
+    displayName: 'eop-task';
+    pluralName: 'eop-tasks';
+    singularName: 'eop-task';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'4096'>;
+    eop: Schema.Attribute.Relation<'oneToOne', 'api::eop.eop'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::eop-task.eop-task'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'4096'>;
+    priority: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    resources_needed: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'4096'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEopEop extends Struct.CollectionTypeSchema {
   collectionName: 'eops';
   info: {
@@ -448,10 +486,12 @@ export interface ApiEopEop extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     draft: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    flood_data: Schema.Attribute.JSON & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::eop.eop'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    resource_data: Schema.Attribute.JSON & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1087,6 +1127,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::category.category': ApiCategoryCategory;
+      'api::eop-task.eop-task': ApiEopTaskEopTask;
       'api::eop.eop': ApiEopEop;
       'api::flood.flood': ApiFloodFlood;
       'api::global.global': ApiGlobalGlobal;

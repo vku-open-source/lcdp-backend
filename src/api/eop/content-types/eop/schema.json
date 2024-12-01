@@ -20,6 +20,14 @@
     "draft": {
       "type": "boolean",
       "default": true
+    },
+    "flood_data": {
+      "type": "json",
+      "required": true
+    },
+    "resource_data": {
+      "type": "json",
+      "required": true
     }
   }
 }
