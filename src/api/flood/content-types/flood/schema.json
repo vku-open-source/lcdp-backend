@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "floods",
+  "info": {
+    "singularName": "flood",
+    "pluralName": "floods",
+    "displayName": "flood",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "water_level": {
+      "required": true,
+      "type": "decimal"
+    },
+    "risk_level": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "json",
+      "required": true
+    }
+  }
+}
