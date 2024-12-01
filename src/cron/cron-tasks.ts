@@ -7,8 +7,8 @@ export default {
         generateNchmfWarning();
       },
       options: {
-        rule: "0 0 * * *",  // Run every day at midnight
-        // rule: "*/1 * * * *",  // Run every 1 minutes
+        // rule: "0 0 * * *",  // Run every day at midnight
+        rule: "*/5 * * * *",  // Run every 5 minutes
         tz: "Asia/Ho_Chi_Minh",
       },
     },
