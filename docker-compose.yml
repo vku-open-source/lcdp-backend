@@ -61,7 +61,7 @@ services:
 volumes:
   postgres_data:
 
-  networks:
+networks:
   strapi:
     name: Strapi
     driver: bridge
