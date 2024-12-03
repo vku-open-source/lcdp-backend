@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "content": {
-      "type": "text",
-      "required": true,
-      "default": "\"\""
-    },
     "draft": {
       "type": "boolean",
       "default": true
@@ -27,6 +22,10 @@
     },
     "resource_data": {
       "type": "text",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
       "required": true
     }
   }

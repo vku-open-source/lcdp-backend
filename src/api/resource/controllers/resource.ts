@@ -35,7 +35,7 @@ export default {
         const data: { answer?: string } = await response.json();
         const answer = extractContentFromTags(data?.answer, "EOP").join("\n\n");
 
-        await strapi.service("api::eop.eop").create({
+        const res = await strapi.service("api::eop.eop").create({
             data: {
                 content: answer,
                 flood_data: floodData,
@@ -44,7 +44,7 @@ export default {
         });
 
         ctx.body = {
-            data: answer,
+            data: res,
         };
     },
     async confirmEOP(ctx) {
