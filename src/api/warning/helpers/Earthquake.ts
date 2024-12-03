@@ -4,6 +4,8 @@ export const getEarthQuake = async () => {
     const response = await vndmsAxios.get(`/EventDisaster/List`);
     const DISASTER_MAPPING = {
         11: "warning_earthquake",
+        3: "warning_flood",
+        23: "warning_heavy_rain",
     };
 
     const data = response.data;
