@@ -22,11 +22,11 @@
       "default": true
     },
     "flood_data": {
-      "type": "json",
+      "type": "text",
       "required": true
     },
     "resource_data": {
-      "type": "json",
+      "type": "text",
       "required": true
     }
   }
