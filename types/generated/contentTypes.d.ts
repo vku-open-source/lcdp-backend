@@ -627,19 +627,17 @@ export interface ApiEopEop extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    content: Schema.Attribute.Text &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'""'>;
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     draft: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    flood_data: Schema.Attribute.JSON & Schema.Attribute.Required;
+    flood_data: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::eop.eop'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    resource_data: Schema.Attribute.JSON & Schema.Attribute.Required;
+    resource_data: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

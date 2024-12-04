@@ -54,6 +54,9 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.3.1
+      '@types/responselike':
+        specifier: ^1.0.3
+        version: 1.0.3
       typescript:
         specifier: ^5
         version: 5.7.2
