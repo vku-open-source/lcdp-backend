@@ -17,7 +17,9 @@ export const getEarthQuake = async () => {
             lat: feature.lat, 
             long: feature.lon, 
             label: feature.kv_anhhuong || "Unknown", 
+            popupInfo: properties.popupInfo || "Unknown", 
             warning_type: DISASTER_MAPPING[feature.disaster.id] || "Unknown",
+
         };
     });
 

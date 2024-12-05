@@ -21,6 +21,7 @@ export const getWaterLevel = async (lv: number) => {
             lat: coordinates[1], 
             long: coordinates[0], 
             label: properties.label || "Unknown", 
+            popupInfo: properties.popupInfo || "Unknown", 
             warning_level: lv, 
             warning_type: "water_level",
             water_level: waterLevel
