@@ -103,6 +103,7 @@ export default {
         const answer = data?.answer || "";
 
         const tasks = extractContentFromTags(answer, "task");
+        const finalTasks = [];
 
         for (const task of tasks) {
             const finalTask = {
@@ -114,18 +115,23 @@ export default {
                     "resources_needed"
                 )[0],
             };
-            await strapi.service("api::eop-task.eop-task").create({
-                data: {
-                    ...finalTask,
-                    eop: {
-                        connect: eopId,
+            finalTasks.push(
+                await strapi.service("api::eop-task.eop-task").create({
+                    data: {
+                        ...finalTask,
+                        eop: {
+                            connect: eopId,
+                        },
                     },
-                },
-            });
+                })
+            );
         }
 
         ctx.body = {
-            data: result,
+            data: {
+                ...result,
+                tasks: finalTasks,
+            },
         };
     },
 };
