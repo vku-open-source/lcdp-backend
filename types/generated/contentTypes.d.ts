@@ -773,6 +773,36 @@ export interface ApiNotificationNotification
   };
 }
 
+export interface ApiVndmsWarningVndmsWarning
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'vndms_warnings';
+  info: {
+    displayName: 'vndms-warning';
+    pluralName: 'vndms-warnings';
+    singularName: 'vndms-warning';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.JSON;
+    datetime: Schema.Attribute.DateTime;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::vndms-warning.vndms-warning'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiWarningWarning extends Struct.SingleTypeSchema {
   collectionName: 'warnings';
   info: {
@@ -1323,6 +1353,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::nchmf-warning.nchmf-warning': ApiNchmfWarningNchmfWarning;
       'api::notification.notification': ApiNotificationNotification;
+      'api::vndms-warning.vndms-warning': ApiVndmsWarningVndmsWarning;
       'api::warning.warning': ApiWarningWarning;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
