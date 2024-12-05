@@ -550,12 +550,16 @@ export interface ApiCommunityCommunity extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    isAprroved: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::community.community'
     > &
       Schema.Attribute.Private;
+    location: Schema.Attribute.String;
     notificationChannels: Schema.Attribute.JSON & Schema.Attribute.Required;
     notifications: Schema.Attribute.Relation<
       'oneToMany',

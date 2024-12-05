@@ -60,6 +60,14 @@
       "relation": "oneToMany",
       "target": "api::notification.notification",
       "mappedBy": "community"
+    },
+    "location": {
+      "type": "string"
+    },
+    "isAprroved": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
