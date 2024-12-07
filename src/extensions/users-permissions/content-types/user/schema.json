@@ -70,6 +70,12 @@
     },
     "allowNotification": {
       "type": "json"
+    },
+    "communities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::community.community",
+      "mappedBy": "author"
     }
   }
 }

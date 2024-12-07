@@ -1,6 +1,5 @@
 import axios from "axios";
 import type { Core } from "@strapi/strapi";
-import { UUID } from "crypto";
 
 interface User {
   id: number;
@@ -13,13 +12,13 @@ interface User {
 }
 
 interface Community {
-  documentId: UUID;
+  documentId: string;
   title: string;
   content: string;
   type: string;
 }
 
-const notificationServiceBaseURL = `http://127.0.0.1:3000/api`;
+const notificationServiceBaseURL = `http://34.67.28.143:3000/api`;
 
 const notificationApi = axios.create({
   baseURL: notificationServiceBaseURL,
@@ -40,7 +39,6 @@ async function handleNotification(event: { result: Community }) {
         .findMany({
           select: ["email", "phone", "allowNotification"],
         });
-
       // Chuẩn bị danh sách recipients
       const recipients = users
         .filter(
@@ -68,7 +66,18 @@ async function handleNotification(event: { result: Community }) {
         );
 
         // Lưu thông tin notification vào database
-        await strapi.entityService.create("api::notification.notification", {
+        // await strapi.entityService.create("api::notification.notification", {
+        //   data: {
+        //     community: result.documentId,
+        //     title: result.title,
+        //     content: result.content,
+        //     recipients: recipients,
+        //     noti_status:
+        //       notificationResponse.status === 200 ? "sent" : "failed",
+        //     sentAt: new Date().toISOString(),
+        //   },
+        // });
+        await strapi.documents("api::notification.notification").create({
           data: {
             community: result.documentId,
             title: result.title,

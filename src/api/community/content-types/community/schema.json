@@ -60,6 +60,12 @@
       "relation": "oneToMany",
       "target": "api::notification.notification",
       "mappedBy": "community"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "communities"
     }
   }
 }
