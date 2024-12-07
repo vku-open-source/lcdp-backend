@@ -170,13 +170,13 @@ docker-compose up
 
 #### 1. Lấy các thông báo khẩn cấp
 
-- **Endpoint**: `GET /api/communities?filters[type][$eq]=emergency_alert
+- **Endpoint**: `GET /api/communities?filters[type][$eq]=emergency_alert`
 - **Mô tả**: Lấy danh sách các thông báo khẩn cấp từ cộng đồng.
 - **Response**:
 
 ```json
 {
-`  "data": [
+  "data": [
     {
       "id": "1",
       "title": "Trường vku bị ngập lụt",
