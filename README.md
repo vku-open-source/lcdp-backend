@@ -131,7 +131,7 @@ docker-compose up
 #### 3. Saved warning by Coordinates 
 
 - **Endpoint**: `GET /api/vndms-warnings`
-- **Description**: Retrieve saved warning information by coordinates from the Vietnam Disaster Monitoring System
+- **Description**: Retrieve saved warning information by coordinates from the Vietnam Disaster Monitoring System.
 - **Response**:
 ```json
 {
@@ -186,6 +186,22 @@ docker-compose up
 | ------ | ---------------------- | ------- |
 | sort    | sort fields | N/A     |
 | pagination[limit]    | Number of hours needed | N/A     |
+
+#### 4. Chatbot 
+- **Endpoint**: `POST /api/chatbots`
+- **Description**: Respond with relevant warning information or other data based on the input question.
+- **Response**:
+```json
+{
+  "data": {
+    "answer": "Hôm nay (07/12), thời tiết ở Huế có khả năng chịu ảnh hưởng của không khí lạnh đang tăng cường. Dự báo khu vực này sẽ có mưa rải rác và trời chuyển rét. Nhiệt độ thấp nhất dự kiến trong khoảng từ 15-18 độ C. Do đó, người dân nên chuẩn bị cho thời tiết lạnh và có thể có mưa trong ngày."
+  },
+  "meta": {}
+}
+```
+| Body         | Description   | Required |
+| ------------ | ------------- | -------- |
+| question    | The prompt to ask    | true     |
 
 ### Resource Module
 
