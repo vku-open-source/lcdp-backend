@@ -6,7 +6,7 @@ Welcome to Emergix, the backend service platform for emergency operations and pl
 
 - [Node.js](https://nodejs.org/) (>= 18.0.0)
 - [npm](https://www.npmjs.com/) hoặc [yarn](https://yarnpkg.com/)
-- [PostgreSQL](https://www.postgresql.org/download/) (cho cơ sở dữ liệu)
+- [PostgreSQL](https://www.postgresql.org/download/) (database)
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
@@ -25,7 +25,7 @@ Welcome to Emergix, the backend service platform for emergency operations and pl
 
    ```bash
    npm install
-   # hoặc
+   # or
    yarn install
    ```
 
@@ -53,10 +53,10 @@ docker-compose up
 
 ### Warning Module
 
-#### 1. Provincial Warning (Tỉnh cấp cảnh báo)
+#### 1. Provincial Warning
 
 - **Endpoint**: `GET /api/nchmf-warnings`
-- **Mô tả**: Retrieve warning information from the National Center for Hydro-Meteorological Forecasting.
+- **Description**: Retrieve warning information from the National Center for Hydro-Meteorological Forecasting.
 - **Response**:
 
 ```json
@@ -95,10 +95,10 @@ docker-compose up
 | ------ | ---------------------- | ------- |
 | N/A    | No required parameters | N/A     |
 
-#### 2. Warning by Coordinates (Cảnh báo theo tọa độ)
+#### 2. Warning by Coordinates 
 
 - **Endpoint**: `GET /api/warning`
-- **Mô tả**: Retrieve warning information by coordinates from the Vietnam Disaster Monitoring System
+- **Description**: Retrieve warning information by coordinates from the Vietnam Disaster Monitoring System
 - **Response**:
 
 ```json
@@ -130,10 +130,10 @@ docker-compose up
 
 ### Resource Module
 
-#### 1. Tạo EOP
+#### 1. Create EOP
 
 - **Endpoint**: `POST /eop/generate-eop`
-- **Mô tả**: Create EOP based on input data (flood, resources).
+- **Description**: Create EOP based on input data (flood, resources).
 - **Body**:
 
 ```json
@@ -148,10 +148,10 @@ docker-compose up
 | floodData    | Flood data    | true     |
 | resourceData | Resource data | true     |
 
-#### 2. Xác nhận EOP
+#### 2. Confirmed EOP
 
 - **Endpoint**: `POST /eop/confirm-eop`
-- **Mô tả**: Users edit and confirm the new EOP, then create a task list.
+- **Description**: Users edit and confirm the new EOP, then create a task list.
 - **Body**:
 
 ```json
@@ -171,7 +171,7 @@ docker-compose up
 #### 1. Get Emergency Alerts
 
 - **Endpoint**: `GET /api/communities?filters[type][$eq]=emergency_alert`
-- **Mô tả**: Retrieve a list of emergency alerts from the community.
+- **Description**: Retrieve a list of emergency alerts from the community.
 
 ```json
 {
@@ -206,7 +206,7 @@ docker-compose up
 #### 2. Create a New Emergency Alert
 
 - **Endpoint**: `POST /api/communities`
-- **Mô tả**: Tạo một thông báo khẩn cấp mới.
+- **Description**: Create new emergency alerts from the community.
 - **Body**:
 
 ```json
