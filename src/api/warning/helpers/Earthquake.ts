@@ -4,6 +4,8 @@ export const getEarthQuake = async () => {
     const response = await vndmsAxios.get(`/EventDisaster/List`);
     const DISASTER_MAPPING = {
         11: "warning_earthquake",
+        3: "warning_flood",
+        23: "warning_heavy_rain",
     };
 
     const data = response.data;
@@ -15,7 +17,9 @@ export const getEarthQuake = async () => {
             lat: feature.lat, 
             long: feature.lon, 
             label: feature.kv_anhhuong || "Unknown", 
+            popupInfo: properties.popupInfo || "Unknown", 
             warning_type: DISASTER_MAPPING[feature.disaster.id] || "Unknown",
+
         };
     });
 

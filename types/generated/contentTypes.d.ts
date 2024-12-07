@@ -502,6 +502,34 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiChatbotChatbot extends Struct.CollectionTypeSchema {
+  collectionName: 'chatbots';
+  info: {
+    displayName: 'chatbot';
+    pluralName: 'chatbots';
+    singularName: 'chatbot';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::chatbot.chatbot'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    question: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCommunityCommunity extends Struct.CollectionTypeSchema {
   collectionName: 'communities';
   info: {
@@ -518,20 +546,20 @@ export interface ApiCommunityCommunity extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    author: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
     content: Schema.Attribute.RichText & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    isAprroved: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::community.community'
     > &
       Schema.Attribute.Private;
+    location: Schema.Attribute.String;
     notificationChannels: Schema.Attribute.JSON & Schema.Attribute.Required;
     notifications: Schema.Attribute.Relation<
       'oneToMany',
@@ -603,19 +631,17 @@ export interface ApiEopEop extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    content: Schema.Attribute.Text &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'""'>;
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     draft: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    flood_data: Schema.Attribute.JSON & Schema.Attribute.Required;
+    flood_data: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::eop.eop'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    resource_data: Schema.Attribute.JSON & Schema.Attribute.Required;
+    resource_data: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -745,6 +771,36 @@ export interface ApiNotificationNotification
     recipients: Schema.Attribute.JSON;
     sentAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiVndmsWarningVndmsWarning
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'vndms_warnings';
+  info: {
+    displayName: 'vndms-warning';
+    pluralName: 'vndms-warnings';
+    singularName: 'vndms-warning';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.JSON;
+    datetime: Schema.Attribute.DateTime;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::vndms-warning.vndms-warning'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1297,6 +1353,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::chatbot.chatbot': ApiChatbotChatbot;
       'api::community.community': ApiCommunityCommunity;
       'api::eop-task.eop-task': ApiEopTaskEopTask;
       'api::eop.eop': ApiEopEop;
@@ -1304,6 +1361,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::nchmf-warning.nchmf-warning': ApiNchmfWarningNchmfWarning;
       'api::notification.notification': ApiNotificationNotification;
+      'api::vndms-warning.vndms-warning': ApiVndmsWarningVndmsWarning;
       'api::warning.warning': ApiWarningWarning;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

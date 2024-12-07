@@ -30,21 +30,11 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "priority": {
       "type": "enumeration",
-      "enum": [
-        "low",
-        "medium",
-        "high",
-        "urgent"
-      ],
+      "enum": ["low", "medium", "high", "urgent"],
       "default": "medium"
     },
     "notificationChannels": {
@@ -61,11 +51,13 @@
       "target": "api::notification.notification",
       "mappedBy": "community"
     },
-    "author": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "communities"
+    "location": {
+      "type": "string"
+    },
+    "isAprroved": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

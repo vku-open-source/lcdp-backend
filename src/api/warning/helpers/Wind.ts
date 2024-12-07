@@ -21,6 +21,7 @@ export const getWindLevel = async (lv1: number, lv2:number, types:number) => {
             lat: coordinates[1], 
             long: coordinates[0], 
             label: properties.label || "Unknown", 
+            popupInfo: properties.popupInfo || "Unknown", 
             warning_type: "warning_wind",
             wind_level: windLevel
         };

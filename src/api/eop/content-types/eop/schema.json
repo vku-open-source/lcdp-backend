@@ -12,21 +12,20 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "content": {
-      "type": "text",
-      "required": true,
-      "default": "\"\""
-    },
     "draft": {
       "type": "boolean",
       "default": true
     },
     "flood_data": {
-      "type": "json",
+      "type": "text",
       "required": true
     },
     "resource_data": {
-      "type": "json",
+      "type": "text",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
       "required": true
     }
   }
