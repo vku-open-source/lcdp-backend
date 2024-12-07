@@ -1,6 +1,6 @@
 # 🚀 Emergix - Unified Emergency Operations and Planning Platform Backend Services
 
-Welcome to Emergix, the backend service platform for emergency operations and planning. Below is a guide on requirements, installation, and the main APIs of the project.
+Chào mừng bạn đến với Emergix, nền tảng dịch vụ backend cho các hoạt động và lập kế hoạch khẩn cấp. Dưới đây là hướng dẫn về yêu cầu, cài đặt và các API chính của dự án.
 
 ## I. Requirements
 
@@ -12,16 +12,16 @@ Welcome to Emergix, the backend service platform for emergency operations and pl
 
 ## II. Installation and Running Applications
 
-### 1. Installation
+### 1. Cài đặt
 
-1. Clone the repository:
+1. Clone kho lưu trữ:
 
    ```bash
    git clone https://github.com/vku-open-source/lcdp-backend.git
    cd lcdp-backend
    ```
 
-2. Install dependencies:
+2. Cài đặt các phụ thuộc:
 
    ```bash
    npm install
@@ -29,21 +29,21 @@ Welcome to Emergix, the backend service platform for emergency operations and pl
    yarn install
    ```
 
-3. Set up environment variables:
+3. Thiết lập biến môi trường:
 
-   - Copy the `.env.example` file to `.env` and edit the values as needed.
+   - Sao chép tệp `.env.example` thành `.env` và chỉnh sửa các giá trị theo nhu cầu.
 
-4. Start the application:
+4. Khởi động ứng dụng:
 
    ```bash
    npm run develop
-   # or
+   # hoặc
    yarn develop
    ```
 
-### 2. Running in Docker
+### 2. Chạy trong Docker
 
-To run the application using Docker, you can use the provided `docker-compose.yml` file:
+Để chạy ứng dụng bằng Docker, bạn có thể sử dụng tệp `docker-compose.yml` đã cung cấp:
 
 ```bash
 docker-compose up
@@ -53,10 +53,10 @@ docker-compose up
 
 ### Warning Module
 
-#### 1. Provincial Warning (Tỉnh cấp cảnh báo)
+#### 1. Tỉnh cấp cảnh báo
 
 - **Endpoint**: `GET /api/nchmf-warnings`
-- **Mô tả**: etrieve warning information from the National Center for Hydro-Meteorological Forecasting.
+- **Mô tả**: Lấy thông tin cảnh báo từ Trung tâm Khí tượng Thủy văn Quốc gia.
 - **Response**:
 
 ```json
@@ -91,14 +91,14 @@ docker-compose up
 }
 ```
 
-| Params | Description            | Default |
-| ------ | ---------------------- | ------- |
-| N/A    | No required parameters | N/A     |
+| Params | Description              | Default |
+| ------ | ------------------------ | ------- |
+| N/A    | Không có tham số yêu cầu | N/A     |
 
-#### 2. Warning by Coordinates (Cảnh báo theo tọa độ)
+#### 2. Cảnh báo theo tọa độ
 
 - **Endpoint**: `GET /api/warning`
-- **Mô tả**: Retrieve warning information by coordinates from the Vietnam Disaster Monitoring System
+- **Mô tả**: Lấy thông tin cảnh báo theo tọa độ từ hệ thống Hệ thống giám sát thiên tai Việt Nam.
 - **Response**:
 
 ```json
@@ -124,16 +124,16 @@ docker-compose up
 }
 ```
 
-| Params | Description            | Default |
-| ------ | ---------------------- | ------- |
-| N/A    | No required parameters | N/A     |
+| Params | Description              | Default |
+| ------ | ------------------------ | ------- |
+| N/A    | Không có tham số yêu cầu | N/A     |
 
 ### Resource Module
 
 #### 1. Tạo EOP
 
 - **Endpoint**: `POST /eop/generate-eop`
-- **Mô tả**: Create EOP based on input data (flood, resources).
+- **Mô tả**: Tạo EOP dựa trên dữ liệu đầu vào (lũ, tài nguyên).
 - **Body**:
 
 ```json
@@ -143,15 +143,15 @@ docker-compose up
 }
 ```
 
-| Body         | Description   | Required |
-| ------------ | ------------- | -------- |
-| floodData    | Flood data    | true     |
-| resourceData | Resource data | true     |
+| Body         | Description           | Required |
+| ------------ | --------------------- | -------- |
+| floodData    | Dữ liệu về lũ         | true     |
+| resourceData | Dữ liệu về tài nguyên | true     |
 
 #### 2. Xác nhận EOP
 
 - **Endpoint**: `POST /eop/confirm-eop`
-- **Mô tả**: Users edit and confirm the new EOP, then create a task list.
+- **Mô tả**: Người dùng chỉnh sửa và xác nhận EOP mới, sau đó tạo danh sách nhiệm vụ.
 - **Body**:
 
 ```json
@@ -161,17 +161,18 @@ docker-compose up
 }
 ```
 
-| Body    | Description    | Required |
-| ------- | -------------- | -------- |
-| eopId   | EOP ID         | true     |
-| content | Edited content | true     |
+| Body    | Description        | Required |
+| ------- | ------------------ | -------- |
+| eopId   | ID của EOP         | true     |
+| content | Nội dung chỉnh sửa | true     |
 
 ### Community API
 
-#### 1. Get Emergency Alerts
+#### 1. Lấy các thông báo khẩn cấp
 
 - **Endpoint**: `GET /api/communities?filters[type][$eq]=emergency_alert
-- **Mô tả**: Retrieve a list of emergency alerts from the community.
+- **Mô tả**: Lấy danh sách các thông báo khẩn cấp từ cộng đồng.
+- **Response**:
 
 ```json
 {
@@ -196,14 +197,14 @@ docker-compose up
 }
 ```
 
-| Params             | Description                           | Default |
-| ------------------ | ------------------------------------- | ------- |
-| filters            | Object containing filter conditions   | N/A     |
-| filters[type]      | Type of alert (e.g., emergency_alert) | N/A     |
-| filters[type][$eq] | Comparison operator (equal)           | N/A     |
-| value              | Value to compare (emergency_alert)    | N/A     |
+| Params             | Description                             | Default |
+| ------------------ | --------------------------------------- | ------- |
+| filters            | Đối tượng chứa các điều kiện lọc        | N/A     |
+| filters[type]      | Loại thông báo (ví dụ: emergency_alert) | N/A     |
+| filters[type][$eq] | Toán tử so sánh (bằng)                  | N/A     |
+| value              | Giá trị cần so sánh (emergency_alert)   | N/A     |
 
-#### 2. Create a New Emergency Alert
+#### 2. Tạo thông báo khẩn cấp mới
 
 - **Endpoint**: `POST /api/communities`
 - **Mô tả**: Tạo một thông báo khẩn cấp mới.
@@ -229,25 +230,14 @@ docker-compose up
 }
 ```
 
-| Body                 | Description                         | Required |
-| -------------------- | ----------------------------------- | -------- |
-| title                | Title of the alert                  | true     |
-| type                 | Type of alert (emergency_alert)     | true     |
-| content              | Content of the alert                | true     |
-| priority             | Priority level (urgent, normal)     | true     |
-| notificationChannels | Notification channels (sms, email)  | true     |
-| location             | Alert location (lat, long, address) | true     |
-
-#### 3. Get All Document Guides
-
-- **Endpoint**: `GET /api/communities`
-- **Description**: Retrieve all document guides such as safety guide, evacuation guide, and first aid guide.
-
-| Params                              | Description                       | Default |
-| ----------------------------------- | --------------------------------- | ------- |
-| filters[type][$eq]=safety_guide     | Get All Safety Guide document     | Null    |
-| filters[type][$eq]=evacuation_guide | Get All Evacuation Guide document | Null    |
-| filters[type][$eq]=first_aid_guide  | Get All First Aid Guide document  | Null    |
+| Body                 | Description                           | Required |
+| -------------------- | ------------------------------------- | -------- |
+| title                | Tiêu đề của thông báo                 | true     |
+| type                 | Loại thông báo (emergency_alert)      | true     |
+| content              | Nội dung thông báo                    | true     |
+| priority             | Độ ưu tiên (urgent, normal)           | true     |
+| notificationChannels | Kênh thông báo (sms, email)           | true     |
+| location             | Vị trí thông báo (lat, long, address) | true     |
 
 ## 🤝 Contributing
 
