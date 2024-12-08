@@ -1,27 +1,27 @@
 # 🚀 Emergix - Unified Emergency Operations and Planning Platform Backend Services
 
-Chào mừng bạn đến với Emergix, nền tảng dịch vụ backend cho các hoạt động và lập kế hoạch khẩn cấp. Dưới đây là hướng dẫn về yêu cầu, cài đặt và các API chính của dự án.
+Welcome to Emergix, the backend service platform for emergency operations and planning. Below is a guide on requirements, installation, and the main APIs of the project.
 
 ## I. Requirements
 
 - [Node.js](https://nodejs.org/) (>= 18.0.0)
-- [npm](https://www.npmjs.com/) hoặc [yarn](https://yarnpkg.com/)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 - [PostgreSQL](https://www.postgresql.org/download/) (database)
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## II. Installation and Running Applications
 
-### 1. Cài đặt
+### 1. Installation
 
-1. Clone kho lưu trữ:
+1. Clone the repository:
 
    ```bash
    git clone https://github.com/vku-open-source/lcdp-backend.git
    cd lcdp-backend
    ```
 
-2. Cài đặt các phụ thuộc:
+2. Install dependencies:
 
    ```bash
    npm install
@@ -29,21 +29,21 @@ Chào mừng bạn đến với Emergix, nền tảng dịch vụ backend cho c�
    yarn install
    ```
 
-3. Thiết lập biến môi trường:
+3. Set up environment variables:
 
-   - Sao chép tệp `.env.example` thành `.env` và chỉnh sửa các giá trị theo nhu cầu.
+   - Copy the `.env.example` file to `.env` and edit the values as needed.
 
-4. Khởi động ứng dụng:
+4. Start the application:
 
    ```bash
    npm run develop
-   # hoặc
+   # or
    yarn develop
    ```
 
-### 2. Chạy trong Docker
+### 2. Running in Docker
 
-Để chạy ứng dụng bằng Docker, bạn có thể sử dụng tệp `docker-compose.yml` đã cung cấp:
+To run the application using Docker, you can use the provided `docker-compose.yml` file:
 
 ```bash
 docker-compose up
@@ -91,9 +91,9 @@ docker-compose up
 }
 ```
 
-| Params | Description              | Default |
-| ------ | ------------------------ | ------- |
-| N/A    | Không có tham số yêu cầu | N/A     |
+| Params | Description            | Default |
+| ------ | ---------------------- | ------- |
+| N/A    | No required parameters | N/A     |
 
 #### 2. Real-time warning by Coordinates
 
@@ -222,10 +222,10 @@ docker-compose up
 }
 ```
 
-| Body         | Description           | Required |
-| ------------ | --------------------- | -------- |
-| floodData    | Dữ liệu về lũ         | true     |
-| resourceData | Dữ liệu về tài nguyên | true     |
+| Body         | Description   | Required |
+| ------------ | ------------- | -------- |
+| floodData    | Flood data    | true     |
+| resourceData | Resource data | true     |
 
 #### 2. Confirmed EOP
 
@@ -240,14 +240,14 @@ docker-compose up
 }
 ```
 
-| Body    | Description        | Required |
-| ------- | ------------------ | -------- |
-| eopId   | ID của EOP         | true     |
-| content | Nội dung chỉnh sửa | true     |
+| Body    | Description    | Required |
+| ------- | -------------- | -------- |
+| eopId   | EOP ID         | true     |
+| content | Edited content | true     |
 
 ### Community API
 
-#### 1. Lấy các thông báo khẩn cấp
+#### 1. Get Emergency Alerts
 
 - **Endpoint**: `GET /api/communities?filters[type][$eq]=emergency_alert`
 - **Description**: Retrieve a list of emergency alerts from the community.
@@ -275,14 +275,14 @@ docker-compose up
 }
 ```
 
-| Params             | Description                             | Default |
-| ------------------ | --------------------------------------- | ------- |
-| filters            | Đối tượng chứa các điều kiện lọc        | N/A     |
-| filters[type]      | Loại thông báo (ví dụ: emergency_alert) | N/A     |
-| filters[type][$eq] | Toán tử so sánh (bằng)                  | N/A     |
-| value              | Giá trị cần so sánh (emergency_alert)   | N/A     |
+| Params             | Description                           | Default |
+| ------------------ | ------------------------------------- | ------- |
+| filters            | Object containing filter conditions   | N/A     |
+| filters[type]      | Type of alert (e.g., emergency_alert) | N/A     |
+| filters[type][$eq] | Comparison operator (equal)           | N/A     |
+| value              | Value to compare (emergency_alert)    | N/A     |
 
-#### 2. Tạo thông báo khẩn cấp mới
+#### 2. Create a New Emergency Alert
 
 - **Endpoint**: `POST /api/communities`
 - **Description**: Create new emergency alerts from the community.
@@ -308,28 +308,39 @@ docker-compose up
 }
 ```
 
-| Body                 | Description                           | Required |
-| -------------------- | ------------------------------------- | -------- |
-| title                | Tiêu đề của thông báo                 | true     |
-| type                 | Loại thông báo (emergency_alert)      | true     |
-| content              | Nội dung thông báo                    | true     |
-| priority             | Độ ưu tiên (urgent, normal)           | true     |
-| notificationChannels | Kênh thông báo (sms, email)           | true     |
-| location             | Vị trí thông báo (lat, long, address) | true     |
+| Body                 | Description                         | Required |
+| -------------------- | ----------------------------------- | -------- |
+| title                | Title of the alert                  | true     |
+| type                 | Type of alert (emergency_alert)     | true     |
+| content              | Content of the alert                | true     |
+| priority             | Priority level (urgent, normal)     | true     |
+| notificationChannels | Notification channels (sms, email)  | true     |
+| location             | Alert location (lat, long, address) | true     |
+
+#### 3. Get All Document Guides
+
+- **Endpoint**: `GET /api/communities`
+- **Description**: Retrieve all document guides such as safety guide, evacuation guide, and first aid guide.
+
+| Params                              | Description                       | Default |
+| ----------------------------------- | --------------------------------- | ------- |
+| filters[type][$eq]=safety_guide     | Get All Safety Guide document     | Null    |
+| filters[type][$eq]=evacuation_guide | Get All Evacuation Guide document | Null    |
+| filters[type][$eq]=first_aid_guide  | Get All First Aid Guide document  | Null    |
 
 ## 🤝 Contributing
 
-Chúng tôi hoan nghênh các đóng góp! Vui lòng làm theo các bước sau:
+We welcome contributions! Please follow these steps:
 
-1. Fork kho lưu trữ.
-2. Tạo một nhánh mới (`git checkout -b feature/YourFeature`).
-3. Thực hiện các thay đổi và commit (`git commit -m 'Add some feature'`).
-4. Đẩy lên nhánh (`git push origin feature/YourFeature`).
-5. Mở một pull request.
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make changes and commit (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Open a pull request.
 
 ## 📝 License
 
-Dự án này được cấp phép theo Giấy phép MIT. Xem tệp [LICENSE](LICENSE) để biết chi tiết.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
