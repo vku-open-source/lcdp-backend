@@ -16,6 +16,7 @@ interface Community {
   title: string;
   content: string;
   type: string;
+  isAprroved: boolean;
 }
 
 const notificationServiceBaseURL = `http://34.67.28.143:3000/api`;
@@ -31,7 +32,7 @@ const notificationApi = axios.create({
 async function handleNotification(event: { result: Community }) {
   const { result } = event;
 
-  if (result.type === "emergency_alert") {
+  if (result.type === "emergency_alert" && result.isAprroved == true) {
     try {
       // Lấy tất cả users từ Strapi
       const users = await strapi
@@ -65,18 +66,6 @@ async function handleNotification(event: { result: Community }) {
           }
         );
 
-        // Lưu thông tin notification vào database
-        // await strapi.entityService.create("api::notification.notification", {
-        //   data: {
-        //     community: result.documentId,
-        //     title: result.title,
-        //     content: result.content,
-        //     recipients: recipients,
-        //     noti_status:
-        //       notificationResponse.status === 200 ? "sent" : "failed",
-        //     sentAt: new Date().toISOString(),
-        //   },
-        // });
         await strapi.documents("api::notification.notification").create({
           data: {
             community: result.documentId,
