@@ -641,6 +641,7 @@ export interface ApiEopEop extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::eop.eop'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    report: Schema.Attribute.Relation<'oneToOne', 'api::report.report'>;
     resource_data: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -771,6 +772,35 @@ export interface ApiNotificationNotification
     recipients: Schema.Attribute.JSON;
     sentAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiReportReport extends Struct.CollectionTypeSchema {
+  collectionName: 'reports';
+  info: {
+    displayName: 'Report';
+    pluralName: 'reports';
+    singularName: 'report';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Content: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    eop: Schema.Attribute.Relation<'oneToOne', 'api::eop.eop'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::report.report'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1361,6 +1391,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::nchmf-warning.nchmf-warning': ApiNchmfWarningNchmfWarning;
       'api::notification.notification': ApiNotificationNotification;
+      'api::report.report': ApiReportReport;
       'api::vndms-warning.vndms-warning': ApiVndmsWarningVndmsWarning;
       'api::warning.warning': ApiWarningWarning;
       'plugin::content-releases.release': PluginContentReleasesRelease;

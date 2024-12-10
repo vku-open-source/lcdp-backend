@@ -27,6 +27,12 @@
     "content": {
       "type": "richtext",
       "required": true
+    },
+    "report": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::report.report",
+      "mappedBy": "eop"
     }
   }
 }
