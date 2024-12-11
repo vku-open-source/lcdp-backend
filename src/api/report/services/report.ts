@@ -32,7 +32,8 @@ export default factories.createCoreService('api::report.report', ({ strapi }) =>
             hãy viết cho tôi một báo cáo công việc chi tiết và rõ ràng
             => task done -> cứu hộ 
             -> task falied -> thiệt hại 
-            Hãy viết bằng tiếng Việt, nhớ viết cả xuống dòng nếu cần thiết
+            Hãy viết bằng tiếng Việt.
+            Hãy viết dấu xuống dòng bằng cách thêm dấu xuyệt n
             Đây là thông tin về EOP: ${JSON.stringify(eopTasksData)}
         `
         const response = await llmServiceAxios.post('/api/v1/chat/ask-latest-chatbot', {question: prompt})
