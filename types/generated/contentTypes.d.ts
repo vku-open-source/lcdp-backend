@@ -584,6 +584,7 @@ export interface ApiCommunityCommunity extends Struct.CollectionTypeSchema {
 export interface ApiEopTaskEopTask extends Struct.CollectionTypeSchema {
   collectionName: 'eop_tasks';
   info: {
+    description: '';
     displayName: 'eop-task';
     pluralName: 'eop-tasks';
     singularName: 'eop-task';
@@ -599,6 +600,9 @@ export interface ApiEopTaskEopTask extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'4096'>;
     eop: Schema.Attribute.Relation<'oneToOne', 'api::eop.eop'>;
+    isDone: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

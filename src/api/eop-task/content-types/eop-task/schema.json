@@ -4,7 +4,8 @@
   "info": {
     "singularName": "eop-task",
     "pluralName": "eop-tasks",
-    "displayName": "eop-task"
+    "displayName": "eop-task",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -33,6 +34,11 @@
     "resources_needed": {
       "type": "text",
       "default": "4096",
+      "required": true
+    },
+    "isDone": {
+      "type": "boolean",
+      "default": false,
       "required": true
     }
   }
