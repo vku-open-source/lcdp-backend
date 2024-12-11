@@ -44,5 +44,18 @@ export default factories.createCoreService('api::report.report', ({ strapi }) =>
         return {
             'answer': response.data.answer
         };
-    }
+    },
+    async find(params):Promise<any> {
+        // Ensure params.populate is set to include the desired relations
+        const fetchParams = this.getFetchParams({
+          ...params,
+          populate: {
+            eop: true, // Assuming 'eop' is the name of your foreign key relation
+            // Add other relations you want to populate here
+          },
+        });
+      
+        const { results, pagination } = await super.find(fetchParams);
+        return { results, pagination };
+      }
 }));
