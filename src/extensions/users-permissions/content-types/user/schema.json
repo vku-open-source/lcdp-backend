@@ -71,6 +71,12 @@
     "allowNotification": {
       "type": "json"
     },
+    "fullname": {
+      "type": "string"
+    },
+    "age": {
+      "type": "string"
+    },
     "communities": {
       "type": "relation",
       "relation": "oneToMany",

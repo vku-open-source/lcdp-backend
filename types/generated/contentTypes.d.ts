@@ -559,7 +559,7 @@ export interface ApiCommunityCommunity extends Struct.CollectionTypeSchema {
       'api::community.community'
     > &
       Schema.Attribute.Private;
-    location: Schema.Attribute.String;
+    location: Schema.Attribute.JSON;
     notificationChannels: Schema.Attribute.JSON & Schema.Attribute.Required;
     notifications: Schema.Attribute.Relation<
       'oneToMany',
@@ -703,6 +703,37 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     siteName: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGoodsSupplyGoodsSupply extends Struct.CollectionTypeSchema {
+  collectionName: 'goods_supplies';
+  info: {
+    displayName: 'goods_supply';
+    pluralName: 'goods-supplies';
+    singularName: 'goods-supply';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::goods-supply.goods-supply'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    quantity: Schema.Attribute.Integer;
+    type: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1322,6 +1353,7 @@ export interface PluginUsersPermissionsUser
     draftAndPublish: false;
   };
   attributes: {
+    age: Schema.Attribute.String;
     allowNotification: Schema.Attribute.JSON;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     communities: Schema.Attribute.Relation<
@@ -1338,6 +1370,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    fullname: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1389,6 +1422,7 @@ declare module '@strapi/strapi' {
       'api::eop.eop': ApiEopEop;
       'api::flood.flood': ApiFloodFlood;
       'api::global.global': ApiGlobalGlobal;
+      'api::goods-supply.goods-supply': ApiGoodsSupplyGoodsSupply;
       'api::nchmf-warning.nchmf-warning': ApiNchmfWarningNchmfWarning;
       'api::notification.notification': ApiNotificationNotification;
       'api::report.report': ApiReportReport;

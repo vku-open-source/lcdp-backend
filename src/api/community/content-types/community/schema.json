@@ -51,13 +51,13 @@
       "target": "api::notification.notification",
       "mappedBy": "community"
     },
-    "location": {
-      "type": "string"
-    },
     "isAprroved": {
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "location": {
+      "type": "json"
     }
   }
 }

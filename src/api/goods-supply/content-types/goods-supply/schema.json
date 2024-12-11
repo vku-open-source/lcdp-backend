@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "goods_supplies",
+  "info": {
+    "singularName": "goods-supply",
+    "pluralName": "goods-supplies",
+    "displayName": "goods_supply"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}
