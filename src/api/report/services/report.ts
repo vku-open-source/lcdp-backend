@@ -37,7 +37,7 @@ export default factories.createCoreService('api::report.report', ({ strapi }) =>
         await strapi.entityService.create('api::report.report', {
             data: {
                 eop: eop_id,
-                content: response.data.answer,
+                Content: response.data.answer,
             },
         });
         return {
