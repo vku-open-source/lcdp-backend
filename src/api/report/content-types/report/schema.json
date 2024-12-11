@@ -4,7 +4,8 @@
   "info": {
     "singularName": "report",
     "pluralName": "reports",
-    "displayName": "Report"
+    "displayName": "Report",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,9 +14,9 @@
   "attributes": {
     "eop": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::eop.eop",
-      "inversedBy": "report"
+      "inversedBy": "reports"
     },
     "Content": {
       "type": "text"

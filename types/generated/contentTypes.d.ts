@@ -641,7 +641,7 @@ export interface ApiEopEop extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::eop.eop'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    report: Schema.Attribute.Relation<'oneToOne', 'api::report.report'>;
+    reports: Schema.Attribute.Relation<'oneToMany', 'api::report.report'>;
     resource_data: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -812,6 +812,7 @@ export interface ApiNotificationNotification
 export interface ApiReportReport extends Struct.CollectionTypeSchema {
   collectionName: 'reports';
   info: {
+    description: '';
     displayName: 'Report';
     pluralName: 'reports';
     singularName: 'report';
@@ -824,7 +825,7 @@ export interface ApiReportReport extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    eop: Schema.Attribute.Relation<'oneToOne', 'api::eop.eop'>;
+    eop: Schema.Attribute.Relation<'manyToOne', 'api::eop.eop'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

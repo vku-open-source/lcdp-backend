@@ -8,9 +8,10 @@ import { llmServiceAxios } from '../../../axios/AxiosCfg';
 export default factories.createCoreService('api::report.report', ({ strapi }) => ({
     async create(ctx: any):Promise<any> {
         const eop_id:any =  ctx.data.eop;
+        console.log('eop_id', eop_id);
         const eop:any = await strapi.entityService.findOne('api::eop.eop', eop_id);
         const existingReport = await strapi.entityService.findMany('api::report.report', {
-            filters: { eop: eop_id },
+            filters: { eop: eop },
         });
 
         if (existingReport.length > 0) {
@@ -36,7 +37,7 @@ export default factories.createCoreService('api::report.report', ({ strapi }) =>
         const response = await llmServiceAxios.post('/api/v1/chat/ask-latest-chatbot', {question: prompt})
         await strapi.entityService.create('api::report.report', {
             data: {
-                eop: eop_id,
+                eop: eop,
                 Content: response.data.answer,
             },
         });

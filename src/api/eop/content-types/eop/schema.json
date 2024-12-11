@@ -28,9 +28,9 @@
       "type": "richtext",
       "required": true
     },
-    "report": {
+    "reports": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::report.report",
       "mappedBy": "eop"
     }
