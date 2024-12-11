@@ -26,17 +26,17 @@ export default factories.createCoreService('api::report.report', ({ strapi }) =>
             'eopTasks': eopTasks
         };
         const prompt = `
-            bạn là một nhà phân tích thiên tai, tôi cần bạn viết một báo cáo về tình hình thiên tai 
-            từ tình trạng những công việc của người tình nguyện viên đi cứu hộ 
-            ở vị trí {sos location}
-            hãy viết cho tôi một báo cáo công việc chi tiết và rõ ràng
-            => task done -> cứu hộ 
-            -> task falied -> thiệt hại 
-            Hãy viết bằng tiếng Việt.
-            Hãy viết dấu xuống dòng bằng cách thêm dấu xuyệt n
-            Đây là thông tin về EOP: ${JSON.stringify(eopTasksData)}
-        `
-        const response = await llmServiceAxios.post('/api/v1/chat/ask-latest-chatbot', {question: prompt})
+        You are a disaster analyst. I need you to write a report on the current disaster situation,
+        focusing on the work of volunteers who are engaged in rescue operations at the location {sos location}.
+        Please write a detailed and clear report about their work.
+        => task done -> rescue
+        -> task failed -> damage
+        Please write in Vietnamese.
+        Use ${String.fromCharCode(92)}n to represent line breaks.
+        Here is the information about EOP: ${JSON.stringify(eopTasksData)}
+    `
+    
+        const response = await llmServiceAxios.post('/api/v1/chat/ask-without-faiss', {question: prompt})
         await strapi.entityService.create('api::report.report', {
             data: {
                 eop: eop,
