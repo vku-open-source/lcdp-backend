@@ -13,7 +13,7 @@ export const vndmsAxios = axios.create({
 const llmServiceBaseURL = `http://${process.env.LLM_SERVICE_HOST}:${process.env.LLM_SERVICE_PORT}`;
 export const llmServiceAxios = axios.create({
     baseURL: llmServiceBaseURL,
-    timeout: 100000,
+    timeout: 1000000,
     headers: {
         'Content-Type': 'application/json',
     },
