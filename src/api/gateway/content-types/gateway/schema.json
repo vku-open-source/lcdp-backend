@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gateways",
+  "info": {
+    "singularName": "gateway",
+    "pluralName": "gateways",
+    "displayName": "gateway"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "default": {
+      "type": "string"
+    }
+  }
+}

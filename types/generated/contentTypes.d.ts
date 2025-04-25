@@ -681,6 +681,34 @@ export interface ApiFloodFlood extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGatewayGateway extends Struct.CollectionTypeSchema {
+  collectionName: 'gateways';
+  info: {
+    displayName: 'gateway';
+    pluralName: 'gateways';
+    singularName: 'gateway';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    default: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gateway.gateway'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -1426,6 +1454,7 @@ declare module '@strapi/strapi' {
       'api::eop-task.eop-task': ApiEopTaskEopTask;
       'api::eop.eop': ApiEopEop;
       'api::flood.flood': ApiFloodFlood;
+      'api::gateway.gateway': ApiGatewayGateway;
       'api::global.global': ApiGlobalGlobal;
       'api::goods-supply.goods-supply': ApiGoodsSupplyGoodsSupply;
       'api::nchmf-warning.nchmf-warning': ApiNchmfWarningNchmfWarning;
