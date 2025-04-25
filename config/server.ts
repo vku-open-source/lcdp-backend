@@ -10,4 +10,7 @@ export default ({ env }) => ({
     enabled: true,
     tasks: cronTasks,
   },
+  n8n: {
+    url: env("N8N_URL", "https://n8n.hoangtrung1801.live"),
+  },
 });
