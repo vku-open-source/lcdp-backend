@@ -19,6 +19,7 @@
     "better-sqlite3": "^11.6.0",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
+    "node-fetch": "^3.3.2",
     "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -38,5 +39,15 @@
   },
   "strapi": {
     "uuid": "9dbc6828-84eb-4814-af7c-730ecb9269de"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "better-sqlite3",
+      "core-js-pure",
+      "esbuild",
+      "msw",
+      "sharp"
+    ]
   }
 }

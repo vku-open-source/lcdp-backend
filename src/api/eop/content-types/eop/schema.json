@@ -28,6 +28,12 @@
       "type": "richtext",
       "required": true
     },
+    "location": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "json"
+    },
     "reports": {
       "type": "relation",
       "relation": "oneToMany",

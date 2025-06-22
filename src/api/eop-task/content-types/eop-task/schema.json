@@ -31,10 +31,8 @@
       "default": "4096",
       "required": true
     },
-    "resources_needed": {
-      "type": "text",
-      "default": "4096",
-      "required": true
+    "resource_needed": {
+      "type": "string"
     },
     "isDone": {
       "type": "boolean",

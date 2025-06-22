@@ -3,6 +3,7 @@
  */
 
 import { factories, Core } from "@strapi/strapi";
+import { config } from "process";
 
 export default {
     routes: [
@@ -26,6 +27,9 @@ export default {
             method: "POST",
             path: "/resource/confirm-eop",
             handler: "api::resource.resource.confirmEOP",
+            config: {
+                auth: false,
+            },
         },
     ],
 };
