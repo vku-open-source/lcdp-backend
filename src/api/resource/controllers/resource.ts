@@ -169,14 +169,22 @@ export default {
     // const eop = await strapi.service("api::eop.eop").findFirst();
     // console.log("eop", eop);
 
+    // const eop = await strapi.documents("api::eop.eop").findFirst({
+    //   filters: {
+    //     id: {
+    //       $eq: eopId,
+    //     },
+    //   },
+    // });
+    // console.log("eop", eop);
+
     const eop = await strapi.documents("api::eop.eop").findFirst({
       filters: {
-        id: {
+        documentId: {
           $eq: eopId,
         },
       },
     });
-    console.log("eop", eop);
 
     if (!eop) {
       ctx.status = 404;
