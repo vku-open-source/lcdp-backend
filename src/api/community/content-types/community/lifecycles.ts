@@ -19,7 +19,9 @@ interface Community {
   isAprroved: boolean;
 }
 
-const notificationServiceBaseURL = `http://34.67.28.143:3000/api`;
+const notificationServiceBaseURL =
+  (strapi.config.get("server.notification.url") as string) ??
+  `http://tap.sigconn.sbs:3010/api`;
 
 const notificationApi = axios.create({
   baseURL: notificationServiceBaseURL,
@@ -29,10 +31,15 @@ const notificationApi = axios.create({
   },
 });
 
+const checkIfNotificationIsAlert = (title: string) => {
+  // using LLM to check if the title is an emergency alert
+};
+
 async function handleNotification(event: { result: Community }) {
   const { result } = event;
 
-  if (result.type === "emergency_alert" && result.isAprroved == true) {
+  // if (result.type === "emergency_alert" && result.isAprroved === true) {
+  if (result.type === "emergency_alert") {
     try {
       // Lấy tất cả users từ Strapi
       const users = await strapi
