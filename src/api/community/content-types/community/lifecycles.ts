@@ -38,8 +38,9 @@ const checkIfNotificationIsAlert = (title: string) => {
 async function handleNotification(event: { result: Community }) {
   const { result } = event;
 
-  if (result.type === "emergency_alert" && result.isAprroved === true) {
-    // if (result.type === "emergency_alert") {
+  console.log({notificationServiceBaseURL})
+  //if (result.type === "emergency_alert" && result.isAprroved === true) {
+     if (result.type === "emergency_alert") {
     try {
       // Lấy tất cả users từ Strapi
       const users = await strapi
@@ -88,7 +89,7 @@ async function handleNotification(event: { result: Community }) {
         });
       }
     } catch (error) {
-      console.error("Error sending notifications:", error.response);
+      console.error("Error sending notifications:", JSON.stringify(error.response.data));
     }
   }
 }

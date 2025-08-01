@@ -32,6 +32,14 @@ export default factories.createCoreService('api::warning.warning', ({ strapi }) 
                 "warning_type": "water_level",
                 "warning_level": 1
               },
+              {
+                "lat": 16.020327173403796, 
+                "long": 108.24065211623731, 
+                "label": "Đà Nẵng",
+                "popupInfo": "<div class=\"station-popup-info\"><div class=\"row-popup\"><div class=\"col-popup-left\"><li>Tên trạm: <b>Đà Nẵng</b> </li><li>Mã trạm: <b>48805</b></li><li>Địa điểm: <b>Đà Nẵng</b></li><li>Tổng lượng mưa: <b>131mm (24),197mm (3 ngày),419.9mm (7 ngày)</b></li><li>Nguồn: <b>KT</b></li><li class='detalRain' data-id='48805' onclick='detailrain(`48805`,`KT`,1)' ><a class=\"description-class\">Chi tiết <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i> </a></b></li></div><img class='agri-chart-img'  src=\"https://quickchart.io/chart?height=175&c={ type: 'bar', data: { 'labels': ['7h \n27/6','13h \n27/6','19h \n27/6','1h \n28/6','7h \n28/6','13h \n28/6'], datasets: [{ type: 'line', label: 'Dataset 1', borderColor: 'green', borderWidth: 2, fill: false, data: [38,6,1,37,84,10 ] } ] }, options: { responsive: true, maintainAspectRatio:false,layout:{padding:{bottom:10,top:20,right:10}}, scales:{yAxes:[{display: false}]},legend:{ display: false},plugins:{datalabels:{display:true,borderRadius:3,align:'top',font: {weight: 'bold'}}}}}\" /></li></div></div>",
+                "rain_level": "131mm (24),197mm (3 ngày),419.9mm (7 ngày)",
+                "warning_type": "warning_rain"
+                },
             ...waterLevels.flat(),
             ...windLevels,
             ...rainLevels,
