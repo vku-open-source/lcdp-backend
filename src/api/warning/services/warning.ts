@@ -45,9 +45,9 @@ export default factories.createCoreService(
                     warning_type: "warning_rain",
                 },
                 {
-                    lat: 16.459464831181226,
+                    lat: 16.459464831182226,
                     long: 107.59305537584456,
-                    label: "Đắk Nông",
+                    label: "Huế",
                     popupInfo:
                         "<div class=\"station-popup-info\"><div class=\"row-popup\"><div class=\"col-popup-left\"><li>Tên trạm: <b>Đắk Nông</b> </li><li>Mã trạm: <b>71720</b></li><li>Địa điểm: <b>Đắk Nông</b></li><li>   Sông: <b>Đắk Nông</b></li><li>Nguồn: <b>KTTV</b></li><li><b>Mực nước (589.35(m) 1-06/12)</b> </li><li class='detalRain' data-id='71720' onclick='detailrain(`71720`,`Water`,1)' ><a class=\"description-class\">Chi tiết <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i> </a></b></li></div><li><img class='agri-chart-img'  src=\"https://quickchart.io/chart?height=175&c={ type: 'bar', data: { 'labels': ['1h \n5/12','7h \n5/12','13h \n5/12','19h \n5/12','1h \n6/12'], datasets: [{ type: 'line', label: 'Dataset 1', borderColor: 'green', borderWidth: 2, fill: false, data: [589.42,589.31,589.4,589.33,589.35 ] } ] }, options: { responsive: true, maintainAspectRatio:false,layout:{padding:{bottom:10,top:20,right:10}}, scales:{yAxes:[{display: false}]},legend:{ display: false},plugins:{datalabels:{display:true,borderRadius:3,align:'top',font: {weight: 'bold'}}}}}\" /></li></div></div>",
                     water_level: "589.35",
@@ -55,8 +55,8 @@ export default factories.createCoreService(
                     warning_level: 1,
                 },
                 {
-                    lat: 16.459464831181226,
-                    long: 107.59305537584456,
+                    lat: 16.020327173405796,
+                    long: 108.24065211623731,
                     label: "Đà Nẵng",
                     popupInfo:
                         "<div class=\"station-popup-info\"><div class=\"row-popup\"><div class=\"col-popup-left\"><li>Tên trạm: <b>Quảng Nam</b> </li><li>Mã trạm: <b>58601</b></li><li>Địa điểm: <b>Quảng Nam</b></li><li>   Sông: <b>Vu Gia</b></li><li>Nguồn: <b>KTTV</b></li><li><b>Mực nước (12.45(m) 1-06/12)</b> </li><li class='detalRain' data-id='58601' onclick='detailrain(`58601`,`Water`,1)' ><a class=\"description-class\">Chi tiết <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i> </a></b></li></div><li><img class='agri-chart-img'  src=\"https://quickchart.io/chart?height=175&c={ type: 'bar', data: { 'labels': ['1h \\n5/12','7h \\n5/12','13h \\n5/12','19h \\n5/12','1h \\n6/12'], datasets: [{ type: 'line', label: 'Dataset 1', borderColor: 'blue', borderWidth: 2, fill: false, data: [12.50,12.48,12.47,12.46,12.45 ] } ] }, options: { responsive: true, maintainAspectRatio:false,layout:{padding:{bottom:10,top:20,right:10}}, scales:{yAxes:[{display: false}]},legend:{ display: false},plugins:{datalabels:{display:true,borderRadius:3,align:'top',font: {weight: 'bold'}}}}}\" /></li></div></div>",
